@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--
+    WELCOME TO THE STRIVE TEAM GENERATOR!
+    The app is pretty straight forward, use Bootstrap to add the following features:
+    - The user can add a list of names
+    - The user can set the number of teams
+    - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list
+    - Each team should be inside a "column"
+    - [EXTRA] Create a button to remove an user from a team, putting him back in the main list
+    - [EXTRA] Create a button to reset the state of the app
+-->
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+
+		<title>Teams App</title>
+
+		<style>
+			body {
+				font-family: "Poppins", sans-serif;
+
+				background: rgb(107, 186, 222);
+				background: -moz-linear-gradient(
+					90deg,
+					rgba(107, 186, 222, 1) 0%,
+					rgba(232, 156, 205, 1) 100%
+				);
+				background: -webkit-linear-gradient(
+					90deg,
+					rgba(107, 186, 222, 1) 0%,
+					rgba(232, 156, 205, 1) 100%
+				);
+				background: linear-gradient(
+					90deg,
+					rgba(107, 186, 222, 1) 0%,
+					rgba(232, 156, 205, 1) 100%
+				);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6bbade",endColorstr="#e89ccd",GradientType=1);
+			}
+
+			h1 {
+				color: rgb(12, 187, 50);
+				margin-top: 40px;
+				text-align: center;
+				font-size: 32px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight:bold;
+			}
+
+			.input-group {
+				margin: 50px 0px;
+			}
+
+			.input-group input {
+				height: 45px;
+			}
+
+			.btn-add {
+				background-color: rgb(12, 187, 50);
+				color: white;
+				padding: 0px 63px;
+			}
+
+			.btn-remove {
+				background-color: rgb(187, 12, 12);
+				color: white;
+				padding: 0px 50px;
+			}
+
+			.btn-reset {
+				background-color: orange;
+				color: white;
+				padding: 0px 50px;
+			}
+
+			ul {
+				display: flex;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				padding-left: 0;
+				margin-bottom: 0;
+			}
+			li {
+				position: relative;
+				display: block;
+				padding: 10px 20px;
+				margin-bottom: 10px;
+				background-color: #fff;
+				border: 1px solid rgba(0, 0, 0, 0.125);
+				border-top-left-radius: 0.25rem;
+				border-top-right-radius: 0.25rem;
+				border-bottom-left-radius: 0.25rem;
+				border-bottom-right-radius: 0.25rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1>Team Names</h1>
+					<hr />
+
+					<div class="input-group">
+						<input type="text" class="form-control" id="player" required />
+						<div class="input-group-append">
+							<button onclick="addItem()" class="btn btn-add" type="button">
+								Assign
+							</button>
+							<button
+								onclick="removeItem()"
+								class="btn btn-remove"
+								type="button"
+							>
+								Remove
+							</button>
+
+							<button onclick="resetItem()" class="btn btn-reset" type="button">
+								Reset
+							</button>
+						</div>
+					</div>
+
+					<!-- ------------------------------------ -->
+					<ul id="dynamic-list"></ul>
+				</div>
+			</div>
+
+			<!-- Optional JavaScript -->
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+			<script>
+				function addItem() {
+					const ul = document.getElementById("dynamic-list");
+					const player = document.getElementById("player");
+					const li = document.createElement("li");
+					li.setAttribute("id", player.value);
+					li.appendChild(document.createTextNode(player.value));
+					ul.appendChild(li);
+				}
+
+				function removeItem() {
+					const ul = document.getElementById("dynamic-list");
+					const player = document.getElementById("player");
+					const item = document.getElementById(player.value);
+					ul.removeChild(item);
+				}
+
+				function resetItem() {
+					document.getElementById("player").value = "";
+				}
+			</script>
+
+			<!-- Optional JavaScript -->
+                      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                      <script src="js/jquery-3.3.1.min.js"></script>
+                      <script src="js/all.js"></script>
+                      <script src="js/main.js"></script>
+                      
+                      <script src="js/popper.min.js"></script>
+                      <script src="js/bootstrap.min.js"></script>
+                      </body>
+                      
+                     
+		</div>
+	</body>
+</html>
